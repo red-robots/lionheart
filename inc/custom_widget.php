@@ -40,13 +40,17 @@ class mywp_widget extends WP_Widget {
         if($view_button_link>0) {
             $page_id = $view_button_link;
         }
-        $html_content = '<div class="textwidget"><div class="testimonial_widget_text">';
-        $html_content .= do_shortcode('[testimonial-feed  words='.$num_words.' display='.$num_items.']');
-            if($view_button_name && $page_id) {
-                $page_link = get_permalink($page_id);
-                $html_content .= '<div class="button clear"><a class="btn" href="'.$page_link.'">'.$view_button_name.'</a></div>';
-            }
-        $html_content .= '</div></div>';
+        $shortcode_content = do_shortcode('[testimonial-feed  words='.$num_words.' display='.$num_items.']');
+        $html_content = '';
+        if($shortcode_content) {
+            $html_content = '<div class="textwidget"><div class="testimonial_widget_text">';
+            $html_content .= $shortcode_content;
+                if($view_button_name && $page_id) {
+                    $page_link = get_permalink($page_id);
+                    $html_content .= '<div class="button clear"><a class="btn" href="'.$page_link.'">'.$view_button_name.'</a></div>';
+                }
+            $html_content .= '</div></div>';
+        }
         echo $html_content;
         echo $args['after_widget'];
     }
