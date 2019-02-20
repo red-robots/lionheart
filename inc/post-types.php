@@ -154,11 +154,11 @@ function custom_post_column( $column, $post_id ) {
     if($post_type=='team') {
         switch ( $column ) {
             case 'photo' :
-                $img = get_field('team_individual_image',$post_id);
+                $img = get_field('photo',$post_id);
                 $img_src = ($img) ? $img['sizes']['thumbnail'] : '';
                 $the_photo = '<span class="tmphoto" style="display:inline-block;width:50px;height:50px;background:#e2e1e1;text-align:center;">';
                 if($img_src) {
-                   $the_photo .= '<img src="'.$img_src.'" alt="" style="width:100%;height:auto" />';
+                   $the_photo .= '<span style="display:block;width:100%;height:100%;background-size:cover;background-position:center;background-image:url('.$img_src.')"></span>';
                 } else {
                     $the_photo .= '<i class="dashicons dashicons-businessman" style="font-size:33px;position:relative;top:8px;left:-6px;opacity:0.3;"></i>';
                 }

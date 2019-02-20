@@ -23,6 +23,11 @@ function acstarter_body_classes( $classes ) {
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
 	}
+    if ( is_home() || is_front_page() ) {
+        $classes[] = 'homepage';
+    } else {
+        $classes[] = 'subpage';
+    }
 
 	$browsers = ['is_iphone', 'is_chrome', 'is_safari', 'is_NS4', 'is_opera', 'is_macIE', 'is_winIE', 'is_gecko', 'is_lynx', 'is_IE', 'is_edge'];
     $classes[] = join(' ', array_filter($browsers, function ($browser) {
@@ -230,14 +235,13 @@ function generate_sitemap($menuName='top-menu',$pageWithCats=null,$orderByNavi=n
 }
 
 
-function shortenText($string, $limit, $break=".", $pad="...") {
+function shortenText($string, $limit, $break = ".", $pad = "...") {
   if(strlen($string) <= $limit) return $string;
   if(false !== ($breakpoint = strpos($string, $break, $limit))) {
     if($breakpoint < strlen($string) - 1) {
       $string = substr($string, 0, $breakpoint) . $pad;
     }
   }
-
   return $string;
 }
 
@@ -245,4 +249,27 @@ function shortenText($string, $limit, $break=".", $pad="...") {
 add_filter("gform_init_scripts_footer", "init_scripts");
 function init_scripts() {
     return true;
+}
+
+
+function format_phone_number($string) {
+    if(empty($string)) return '';
+    $append = '';
+    if (strpos($string, '+') !== false) {
+        $append = '+';
+    }
+    $string = preg_replace("/[^0-9]/", "", "705-666-8888" );
+    $string = preg_replace('/\s+/', '', $string);
+    return $append.$string;
+}
+
+function get_instagram_setup() {
+    global $wpdb;
+    $result = $wpdb->get_row( "SELECT option_value FROM $wpdb->options WHERE option_name = 'sb_instagram_settings'" );
+    if($result) {
+        $option = ($result->option_value) ? @unserialize($result->option_value) : false;
+    } else {
+        $option = '';
+    }
+    return $option;
 }

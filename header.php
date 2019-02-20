@@ -16,38 +16,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 <script defer src="<?php bloginfo( 'template_url' ); ?>/assets/svg-with-js/js/fontawesome-all.js"></script>
-
 
 <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
+<div id="page" class="site clear">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'acstarter' ); ?></a>
+	<?php
+		$home_logo = get_field('home_logo','option');
+		$subpage_logo = get_field('subpage_logo','option');
+		$the_logo = '';
+		if( is_home() || is_front_page() ) {
+			$home_class = 'home';
+			$the_logo = $home_logo['url'];
+		} else {
+			$home_class = 'sub';
+			$the_logo = $subpage_logo['url'];
+		}
+
+		$social['phone'] = array(
+						'icon'=>'fas fa-phone',
+						'url'=> get_field('phone','option')
+					);
+		$social['facebook'] = array(
+						'icon'=>'fab fa-facebook-f',
+						'url'=> get_field('facebook_url','option')
+					);
+		$social['instagram'] = array(
+						'icon'=>'fab fa-instagram',
+						'url'=> get_field('instagram_url','option')
+					);
+	?>
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="wrapper">
-			
-			<?php if( get_custom_logo() ) { ?>
-	            <div class="logo">
-	            	<?php the_custom_logo(); ?>
-	            </div>
-	        <?php } else { ?>
-	            <h1 class="logo">
-		            <a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
-	            </h1>
-	        <?php } ?>
-
-
-
-			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'MENU', 'acstarter' ); ?></button>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+			<div class="logo-section clear">
+				<div class="logo">
+					<?php if($the_logo) { ?>
+						<a class="img" href="<?php echo get_site_url()?>"><img src="<?php echo $the_logo; ?>" alt="<?php echo get_bloginfo('name'); ?>" /></a>
+					<?php } else { ?>
+						<a class="text" href="<?php echo get_site_url()?>"><?php echo get_bloginfo('name'); ?></a>
+					<?php } ?>
+		        </div>
+		        <div class="social-media">
+		        	<?php foreach($social as $type=>$s) { ?>
+		        		<?php if($s['url']) { ?>
+		        			<?php if($type=='phone') { ?>
+		        				<a class="<?php echo $type;?>" href="tel:<?php echo format_phone_number($s['url'])?>"><span class="icon"><i class="<?php echo $s['icon']?>"></i></span></a>
+		        			<?php } else { ?>
+		        				<a class="<?php echo $type;?>" href="<?php echo $s['url']?>" target="_blank"><i class="<?php echo $s['icon']?>"></i></a>
+		        			<?php } ?>
+		        		<?php } ?>
+		        	<?php } ?>
+		        </div>
+			</div>
+	
+			<nav id="site-navigation" class="main-navigation clear <?php echo $home_class;?>" role="navigation">
+				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu','container'=>false ) ); ?>
 			</nav><!-- #site-navigation -->
-	</div><!-- wrapper -->
+
+			<nav id="mobile-navigation" class="mobile-main-navigation <?php echo $home_class;?>">
+				<a href="#" id="toggleMenu" class="toggleMenu"><span></span></a>
+				<div class="mobile-nav-inner clear"><?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'mobile-primary-menu','container_class'=>'mobile_nav' ) ); ?></div>
+			</nav>
+		</div><!-- wrapper -->
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content wrapper">
+	<?php if( is_home() || is_front_page() ) { 
+		get_template_part('template-parts/banner','home'); 
+	} else { 
+		get_template_part('template-parts/banner','subpage'); 
+	} ?>
+
+
+	<div id="content" class="site-content clear">

@@ -11,16 +11,21 @@
 	Custom client login, link and title.
 ---------------------------------------*/
 function my_login_logo() { 
-  $custom_logo_id = get_theme_mod( 'custom_logo' );
-  $logoImg = wp_get_attachment_image_src($custom_logo_id,'large');
-  $logo_url = ($logoImg) ? $logoImg[0] : '';
-  if($custom_logo_id) { ?>
+  $logo = get_field('home_logo','option');
+  $logo_url = ($logo) ? $logo['url'] : '';
+  if($logo_url) { ?>
   <style type="text/css">
+    body.login div#login h1 {
+      background-color: #bf1e2d;
+      padding: 8px 0;
+      margin-bottom: 10px;
+    }
     body.login div#login h1 a {
       <?php if($logo_url) { ?>
         background-image: url(<?php echo $logo_url; ?>);
       <?php } ?> 
       background-size: contain;
+      margin-bottom: 0!important;
       width: 100%;
       height: 67px;
     }

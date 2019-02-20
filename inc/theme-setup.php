@@ -37,7 +37,7 @@ function acstarter_setup() {
   // This theme uses wp_nav_menu() in one location.
   register_nav_menus( array(
     'primary' => esc_html__( 'Primary', 'acstarter' ),
-    'sitemap' => esc_html__( 'Sitemap', 'acstarter' ),
+    'footer' => esc_html__( 'Footer', 'acstarter' ),
   ) );
 
   /*
@@ -71,12 +71,13 @@ function acstarter_setup() {
   ) ) );
 
   // Add theme support for Custom Logo.
-  add_theme_support( 'custom-logo', array(
-    'width'       => 250,
-    'height'      => 250,
-    'flex-width'  => true,
-    'flex-height' => true,
-  ) );
+  // add_theme_support( 'custom-logo', array(
+  //   'width'       => 250,
+  //   'height'      => 250,
+  //   'flex-width'  => true,
+  //   'flex-height' => true,
+  // ) );
+  
 }
 endif;
 add_action( 'after_setup_theme', 'acstarter_setup' );
@@ -99,14 +100,26 @@ add_action( 'after_setup_theme', 'acstarter_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function acstarter_widgets_init() {
+  
+  register_sidebar( array(
+    'name'          => esc_html__( 'Home Bottom Content', 'acstarter' ),
+    'id'            => 'home-bottom',
+    'description'   => '',
+    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h2 class="widget-title clear">',
+    'after_title'   => '</h2>',
+  ) );
+
   register_sidebar( array(
     'name'          => esc_html__( 'Sidebar', 'acstarter' ),
     'id'            => 'sidebar-1',
     'description'   => '',
     'before_widget' => '<section id="%1$s" class="widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h2 class="widget-title">',
+    'before_title'  => '<h2 class="widget-title clear">',
     'after_title'   => '</h2>',
   ) );
+
 }
 add_action( 'widgets_init', 'acstarter_widgets_init' );

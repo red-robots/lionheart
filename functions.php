@@ -68,3 +68,6 @@ require get_template_directory() . '/inc/block-all-registration-and-comments.php
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+require get_template_directory() . '/inc/custom_widget.php';
+

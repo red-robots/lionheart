@@ -9,29 +9,6 @@ jQuery(document).ready(function ($) {
 	
 	/*
 	*
-	*	Current Page Active
-	*
-	------------------------------------*/
-	$("[href]").each(function() {
-    if (this.href == window.location.href) {
-        $(this).addClass("active");
-        }
-	});
-	/*
-        FAQ dropdowns
-	__________________________________________
-	*/
-	$('.question').click(function() {
-	 
-	    $(this).next('.answer').slideToggle(500);
-	    $(this).toggleClass('close');
-	    $(this).find('.plus-minus-toggle').toggleClass('collapsed');
-	    $(this).parent().toggleClass('active');
-	 
-	});
-
-	/*
-	*
 	*	Responsive iFrames
 	*
 	------------------------------------*/
@@ -52,6 +29,16 @@ jQuery(document).ready(function ($) {
 		animation: "slide",
 	}); // end register flexslider
 	
+	$('.post-items-wrapper').flexslider({
+    	selector: '.post-items > .p_item',
+    	animation: "fade",
+    	smoothHeight: false,
+        controlNav: true,               
+        directionNav: false,
+        slideshowSpeed: 8000
+	});
+
+
 	/*
 	*
 	*	Colorbox
@@ -77,28 +64,6 @@ jQuery(document).ready(function ($) {
 			}
  		 });
 	});
-
-	/*
-	*
-	*	Smooth Scroll to Anchor
-	*
-	------------------------------------*/
-	 $('a').click(function(){
-	    $('html, body').animate({
-	        scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top
-	    }, 500);
-	    return false;
-	});
-
-	/*
-	*
-	*	Nice Page Scroll
-	*
-	------------------------------------*/
-	$(function(){	
-		$("html").niceScroll();
-	});
-	
 	
 	/*
 	*
@@ -106,6 +71,7 @@ jQuery(document).ready(function ($) {
 	*
 	------------------------------------*/
 	$('.js-blocks').matchHeight();
+	$('.home-bottom-content .widget .textwidget').matchHeight();
 
 	/*
 	*
@@ -113,5 +79,28 @@ jQuery(document).ready(function ($) {
 	*
 	------------------------------------*/
 	new WOW().init();
+
+
+	$(document).on("click","#toggleMenu",function(e){
+		e.preventDefault();
+		$(this).toggleClass('open');
+		$('.mobile-navigation').toggleClass('open');
+		$('body').toggleClass('open-mobile-menu');
+		$('.site-header .logo').toggleClass('fixed');
+		var parentdiv = $(".mobile-navigation").outerHeight();
+		var mobile_nav_height = $(".mobile-main-nav").outerHeight();
+		if(mobile_nav_height>parentdiv) {
+			$('.mobile-navigation').addClass("overflow-height");
+		}
+	});
+
+	$("#primary-menu li").hover(
+		function() {
+			$(this).children('.sub-menu').stop().slideDown();
+		},
+		function () {
+			$(this).children('.sub-menu').stop().slideUp();
+		}
+	);
 
 });// END #####################################    END

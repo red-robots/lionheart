@@ -15,23 +15,30 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
+.text-center{text-align:center;}
 .clear:before, .clear:after { content: " "; display: table; }
 .clear { *zoom: 1; }
 .clear {clear: both;}
 .wrapper {
 	width: 100%;
 	margin: 0px auto;
-	padding: 20px;
+	padding: 0 20px;
 	
 	@media screen and (min-width: $tabwidth) {
 		width: 100%;
 	}
 	@media screen and (min-width: $deskwidth) {
-		width: 1200px;
+		width: 1100px;
 		padding: 0px;
 	}
 }
-
+body {
+	font-family: $font__main;
+	font-size: 14px;
+}
+.site {
+	position: relative;
+}
 .content-area {
 	width: 100%;
 	margin: 0px auto;
@@ -59,33 +66,89 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong {
 		/*width: 1200px;*/
 	}
 }
-
-/* Logo */
-.logo , h1.logo {
-	width: 300px;
-	margin: 10px auto;
-
+.logo-section {
+	margin-top: 18px;
+	margin-bottom: 12px;
+}
+.logo {
+	width: 150px;
+	float: left;
+	position: relative;
+	z-index: 12;
 	@media screen and (min-width: $tabwidth) {
-		width: 300px;
+		width: 270px;
+	}
+	a {
+		display: block;
+		text-decoration: none;
+	}
+	.img,img {
+		display: block;
+		width: 100%;
 		float: left;
-		margin: 0;
 	}
-	@media screen and (min-width: $deskwidth) {
-		/*width: 1200px;*/
+	img {
+		height: auto;
+	}
+	.text {
+		font-size: 20px;
+		font-weight: bold;
 	}
 }
-.logo a, h1.logo a {
-	width: 300px;
-	display: block;
 
+.home .site-header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+}
+.site-header .social-media {
+	display: inline-block;
+	float: right;
+	text-align: right;
+	position: relative;
+	right: 100px;
+	z-index: 10;
 	@media screen and (min-width: $tabwidth) {
-		width: 300px;
+		width: 150px;
+		top: 13px;
+		right: 0;
 	}
-	@media screen and (min-width: $deskwidth) {
-		/*width: 1200px;*/
+	a {
+		display: inline-block;
+		color: #FFF;
+		font-size: 20px;
+		position: relative;
+		margin-left: 10px;
+		@include transition(all ease-out .3s);
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+	.phone .icon {
+		display: inline-block;
+		transform: rotateY(180deg);
 	}
 }
+.subpage .site-header .social-media {
+	a {
+		color: $color-red;
+	}
+}
+
 .site-footer {
 	width: 100%;
-	clear: both;
+	background: $color-navy;
+	color: #FFF;
+	font-size: 13px;
+	.wrapper {
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	a {
+		color: #FFF;
+		text-decoration: none;
+		@include transition(all ease-out .3s);
+	}
 }
