@@ -29,26 +29,25 @@
 					<?php wp_nav_menu( array( 'theme_location' => 'footer', 'menu_id' => 'footer-menu','container'=>false ) ); ?>
 				</div>
 
-				<?php
-					$selected_agents = get_field('agents_contact','option');
-				?>
-				<div class="col col-2 foot_agents">
-					<div class="selected-agents">
-						<p class="a_title">Contact Our Agents</p>
-			        	<?php $j=1; foreach($selected_agents as $a) { 
-			        		$post_agent_id = $a->ID; 
-			        		$agent_name = $a->post_title;
-			        		$agent_phone = get_field('phone',$post_agent_id); ?>
-			        		<?php if($agent_phone) { ?>
-			        		<div class="agent-name<?php echo ($j==1) ? ' first':''?>">
-			        			<p class="name"><?php echo $agent_name;?></p>
-			        			<p class="phone"><a href="tel:<?php echo format_phone_number($agent_phone)?>"><?php echo $agent_phone;?></a></p>
-			        		</div>
-			        		<div class="clear"></div>
-			        		<?php $j++; } ?>
-			        	<?php } ?>
-			        </div>
-				</div>
+				<?php if ( $selected_agents = get_field('agents_contact','option') ) { ?>
+					<div class="col col-2 foot_agents">
+						<div class="selected-agents">
+							<p class="a_title">Contact Our Agents</p>
+				        	<?php $j=1; foreach($selected_agents as $a) { 
+				        		$post_agent_id = $a->ID; 
+				        		$agent_name = $a->post_title;
+				        		$agent_phone = get_field('phone',$post_agent_id); ?>
+				        		<?php if($agent_phone) { ?>
+				        		<div class="agent-name<?php echo ($j==1) ? ' first':''?>">
+				        			<p class="name"><?php echo $agent_name;?></p>
+				        			<p class="phone"><a href="tel:<?php echo format_phone_number($agent_phone)?>"><?php echo $agent_phone;?></a></p>
+				        		</div>
+				        		<div class="clear"></div>
+				        		<?php $j++; } ?>
+				        	<?php } ?>
+				        </div>
+					</div>
+				<?php } ?>
 
 			</div>
 		</div><!-- wrapper -->
