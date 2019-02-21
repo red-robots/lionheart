@@ -22,16 +22,19 @@ if($sidebar_text || $selected_testimonials) { ?>
 		</section>
 	<?php } ?>
 
-	<?php if($selected_testimonials) { ?>
+	<?php if($selected_testimonials) { 
+		$count = count($selected_testimonials); 
+		$div_id = ($count>1) ? 'testimonial_widget':'testimonial_widget_noslide';
+		?>
 		<section class="widget widget_text acf_widget">
 			<?php if($sidebar_testimonial_title) { ?><h2 class="widget-title clear"><?php echo $sidebar_testimonial_title; ?></h2><?php } ?>
-			<div id="testimonial_widget" class="textwidget clear">
+			<div id="<?php echo $div_id; ?>" class="textwidget clear">
 				<div class="widget-testimonial">
 					<?php foreach ($selected_testimonials as $st) { 
 						$content = $st->post_content; 
 						$content = apply_filters('the_content', $content);
 						?>
-						<div class="entry clear">
+						<div class="entry clear <?php echo ($count>1) ? 'slide-item':'no-slide';?>">
 							<div class="text"><?php echo $content; ?></div>
 							<div class="author"><?php echo $st->post_title; ?></div>
 						</div>

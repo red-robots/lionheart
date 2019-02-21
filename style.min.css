@@ -1946,8 +1946,8 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong{overflow-wrap:normal;word-wrap:normal;-
 .widget-button a{display:inline-block;padding:8px 20px;background:#bf1e2d;color:#FFF;text-transform:uppercase;font-size:14px;font-weight:300}
 .widget-testimonial{width:100%;float:left;position:relative}
 .widget-testimonial p{margin-top:0;margin-bottom:13px}
-.widget-testimonial .entry{position:absolute !important;top:0;opacity:0}
-.widget-testimonial .entry.flex-active-slide{opacity:1}
+.widget-testimonial .slide-item{position:absolute !important;top:0;opacity:0}
+.widget-testimonial .slide-item.flex-active-slide{opacity:1}
 .widget-testimonial .text{font-size:12px}
 .widget-testimonial .author{font-size:11px;font-weight:600;position:relative;top:-8px;text-align:right}
 .blog .format-aside .entry-title,.archive .format-aside .entry-title{display:none}

@@ -39,7 +39,7 @@ jQuery(document).ready(function ($) {
 	});
 
 	$('#testimonial_widget').flexslider({
-    	selector: '.widget-testimonial > .entry',
+    	selector: '.widget-testimonial > .slide-item',
     	animation: "fade",
     	smoothHeight: false,
         controlNav: false,               
