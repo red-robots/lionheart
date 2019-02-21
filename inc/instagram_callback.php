@@ -47,6 +47,7 @@ if($setup) {
                         success: function(response){
                             if(response.data!=undefined) {
                                 var obj = response.data;
+                                console.log(obj);
                                 var content = '<div class="instagram-list"><div class="insta-slide">';
                                     $(obj).each(function(k,v){
                                         var img = v.images;
