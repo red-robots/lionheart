@@ -45,10 +45,11 @@ if($setup) {
                         type: 'GET',
                         data: {access_token: token, count: num_photos},
                         success: function(response){
+                            var content = '';
                             if(response.data!=undefined) {
                                 var obj = response.data;
-                                console.log(obj);
-                                var content = '<div class="instagram-list"><div class="insta-slide">';
+                                if( obj.length > 0 ) {
+                                    content = '<div class="instagram-list"><div class="insta-slide">';
                                     $(obj).each(function(k,v){
                                         var img = v.images;
                                         var img_src = img.standard_resolution.url;
@@ -62,6 +63,9 @@ if($setup) {
                                         content += '</a></div>';
                                     });
                                     content += '</div></div>';
+                                } else {
+                                    content = '<div class="instagram-list"><div class="insta-nopost"></div></div>';
+                                }
                                 $instagram_container.html(content);
                             }  
                         },

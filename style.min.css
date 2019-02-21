@@ -1900,7 +1900,8 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong{overflow-wrap:normal;word-wrap:normal;-
 .insta_widget_info{width:100%;position:relative;height:340px}
 @media screen and (min-width:600px){.insta_widget_info{height:600px}
 }@media screen and (min-width:900px){.insta_widget_info{height:310px}
-}.instagram-list,.insta-slide,.insta-item{width:100%;height:100%;float:left;overflow:hidden}
+}.instagram-list,.insta-slide,.insta-item,.insta-nopost{width:100%;height:100%;float:left;overflow:hidden}
+.insta-nopost{background-image:url("images/nopost.png");background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#FFF}
 .insta-item{position:absolute !important;top:0;left:0;width:100%}
 .insta-item.flex-active-slide{z-index:50;opacity:1}
 .insta-item .instalink{display:block;width:100%;height:100%;position:relative;background-size:cover;background-position:center;background-repeat:no-repeat}

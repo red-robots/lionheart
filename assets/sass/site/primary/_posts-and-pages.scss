@@ -360,11 +360,21 @@
 		height: 310px;
 	}
 }
-.instagram-list,.insta-slide,.insta-item {
+.instagram-list,
+.insta-slide,
+.insta-item,
+.insta-nopost {
 	width: 100%;
 	height: 100%;
 	float: left;
 	overflow: hidden;
+}
+.insta-nopost {
+	background-image:url('images/nopost.png');
+	background-size:cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: #FFF;
 }
 .insta-item {
 	position: absolute!important;
