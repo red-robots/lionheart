@@ -26,9 +26,9 @@ class featlisting_widget extends WP_Widget {
         echo $args['before_title'] . $title . $args['after_title'];
         
         //Output
-        $html_content = '';
         $property_page_ids = ( isset( $instance[ 'property_page_id' ] ) ) ? $instance[ 'property_page_id' ] : '';
         $selected_ids = ($property_page_ids) ? explode(",",$property_page_ids) : array();
+        $html_content = '<div class="textwidget">';
         if($selected_ids) {
             foreach($selected_ids as $id) {
                 if( $post = get_post($id) ) {
@@ -49,7 +49,7 @@ class featlisting_widget extends WP_Widget {
                         }
                     }
 
-                    $html_content .= '<div class="textwidget"><div class="listing-info">';
+                    $html_content .= '<div class="listing-info">';
                         if($img) {
                             $html_content .= '<div class="imagewrap"><img src="'.$img['url'].'" alt="'.$img['title'].'" /></div>';
                         }
@@ -61,11 +61,13 @@ class featlisting_widget extends WP_Widget {
                         if($link) {
                             $html_content .= '<div class="button"><a href="'.$link.'"'.$target.'>Read More</a></div>';
                         }
-                        $html_content .= '</div>';
                     $html_content .= '</div></div>';
                 }
             }
+        } else {
+            $html_content .= '<h2 class="nolisting">No listing selected.</h2>';
         }
+        $html_content .= '</div>';
 
         
         echo $html_content;

@@ -224,6 +224,7 @@
 		box-sizing: border-box;
 		background: #FFF;
 		position: relative;
+		min-height: 320px;
 		@media screen and (min-width: $tabwidth) {
 			// height: 330px;
 		}
@@ -633,4 +634,10 @@
 			background: $color-red;
 		}
 	}
+}
+.nolisting {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 16px;
 }

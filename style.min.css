@@ -1875,7 +1875,7 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong{overflow-wrap:normal;word-wrap:normal;-
 }@media screen and (min-width:900px){.home-bottom-content .widget{margin-bottom:0;width:33.333%;padding-left:25px;padding-right:25px}
 }.home-bottom-content .widget img{width:100%;height:auto}
 .home-bottom-content .widget:last-child{margin-bottom:0}
-.home-bottom-content .textwidget{box-sizing:border-box;background:#FFF;position:relative}
+.home-bottom-content .textwidget{box-sizing:border-box;background:#FFF;position:relative;min-height:320px}
 @media screen and (min-width:900px){.home-bottom-content .textwidget{overflow:hidden}
 }.home-bottom-content #sb_instagram,.home-bottom-content #sb_instagram #sbi_images{margin:0 0 !important;padding:0 0 !important}
 .home-bottom-content #sb_instagram{max-width:100% !important}
@@ -1957,6 +1957,7 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong{overflow-wrap:normal;word-wrap:normal;-
 .listing-info .button{margin-top:18px}
 .listing-info .button a{display:inline-block;padding:5px 20px;color:#FFF;font-size:13px;font-weight:300;text-transform:uppercase;background:#303042}
 .listing-info .button a:hover{background:#bf1e2d}
+.nolisting{position:relative;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);font-size:16px}
 .blog .format-aside .entry-title,.archive .format-aside .entry-title{display:none}
 .comment-content a{word-wrap:break-word}
 .bypostauthor{display:block}
