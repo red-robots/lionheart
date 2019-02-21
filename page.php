@@ -1,31 +1,23 @@
 <?php
-/**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package ACStarter
- */
-
+$banner_image = get_field('subpage_banner');
 get_header(); ?>
 
-	<div id="primary" class="full-content-area clear">
-		<main id="main" class="site-main wrapper" role="main">
+	<div id="primary" class="content-area-sidebar clear <?php echo ($banner_image) ? 'has-banner':'no-banner';?>">
+		<div class="wrapper">
+			<main id="main" class="site-main content-area" role="main">
+				<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php
-			while ( have_posts() ) : the_post();
+					<?php if($banner_image) { ?>
+						<?php the_content(); ?>
+					<?php } else { ?>
+						<?php get_template_part( 'template-parts/content', 'page' ); ?>
+					<?php } ?>
 
-				get_template_part( 'template-parts/content', 'page' );
+				<?php endwhile;  ?>
+			</main><!-- #main -->
 
-			endwhile; // End of the loop.
-			?>
-
-		</main><!-- #main -->
+			<?php get_sidebar('custom'); ?>
+		</div>
 	</div><!-- #primary -->
 
 <?php

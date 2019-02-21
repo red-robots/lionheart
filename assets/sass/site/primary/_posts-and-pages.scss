@@ -3,11 +3,25 @@
 	width: 100%;
 	height: 400px;
 	background-color: $color-navy;
+	@include transition(all ease-out .3s);
 	@media screen and (min-width: $tabwidth) {
 		height: 550px;
 	}
 	@media screen and (min-width: $midwidth) {
 		height: 750px;
+	}
+}
+.subpage-banner {
+	position: relative;
+	width: 100%;
+	height: 210px;
+	background-color: $color-navy;
+	@include transition(all ease-out .3s);
+	@media screen and (min-width: $tabwidth) {
+		height: 250px;
+	}
+	@media screen and (min-width: $midwidth) {
+		height: 350px;
 	}
 }
 .banner-overlay {
@@ -487,5 +501,88 @@
 		&:hover {
 			opacity: 0.5;
 		}
+	}
+}
+.content-area-sidebar {
+	padding-bottom: 40px;
+	&.has-banner {
+		padding-top: 40px;
+		#secondary {
+			margin-top: 15px;
+		}
+	}
+	&.no-banner {
+		padding-top: 30px;
+		margin-top: 15px;
+		border-top: 2px solid $color-navy;
+		#secondary {
+			margin-top: 50px;
+			@media screen and (min-width: $tabwidth) {
+				margin-top: 65px;
+			}
+		}
+	}
+	.widget {
+		margin-bottom: 40px;
+	}
+	.widget-title {
+		margin: 0 0 10px;
+		font-size: 18px;
+		font-weight: 600;
+		text-transform: uppercase;
+		line-height: 1.2;
+	}
+	.content-area {
+		h2 { font-size: 22px; }
+		h2,h3,h4,h5 {
+			margin-top: 0;
+			margin-bottom: 15px;
+			font-weight: 600;
+		}
+	}
+}
+.entry-title {
+	margin-top: 0;
+	margin-bottom: 20px;
+	font-size: 30px;
+	font-weight: 600;
+}
+.widget-button {
+	margin-top: 18px;
+	a {
+		display: inline-block;
+		padding: 8px 20px;
+		background: $color-red;
+		color: #FFF;
+		text-transform: uppercase;
+		font-size: 14px;
+		font-weight: 300;
+	}
+}
+.widget-testimonial {
+	width: 100%;
+	float: left;
+	position: relative;
+	p {
+		margin-top: 0;
+		margin-bottom: 13px;
+	}
+	.entry {
+		position: absolute!important;
+		top: 0;
+		opacity: 0;
+		&.flex-active-slide {
+			opacity: 1;
+		}
+	}
+	.text {
+		font-size: 12px;
+	}
+	.author {
+		font-size: 11px;
+		font-weight: 600;
+		position: relative;
+    	top: -8px;
+    	text-align: right;
 	}
 }

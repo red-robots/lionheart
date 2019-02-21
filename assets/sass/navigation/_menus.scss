@@ -3,6 +3,9 @@
 	@media screen and (min-width: $tabwidth) {
 		display: block;
 	}
+	&.sub {
+		margin-bottom: 18px;
+	}
 	ul {
 		margin: 0 0;
 		padding: 0 0;
@@ -76,6 +79,10 @@
 		position: absolute;
 		top: -7px;
     	left: 18px;
+	}
+	&.sub .menu > li.current_page_item:hover > a,
+	&.sub .menu > li.current_page_item > a {
+		color: $color-red;
 	}
 }
 

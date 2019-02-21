@@ -240,3 +240,24 @@ function display_testimonials( $atts ) {
     return $html_content;
 }
 add_shortcode( 'testimonial-feed', 'display_testimonials' );
+
+
+/* ACF - Sidebar Widget */
+// add_filter('dynamic_sidebar_params', 'my_dynamic_sidebar_params');
+// function my_dynamic_sidebar_params( $params ) {
+//     $widget_name = $params[0]['widget_name'];
+//     $widget_id = $params[0]['widget_id'];
+//     if(!$params) return '';
+//     foreach($params as $k=>$p) {
+//         $widget_id = ( isset($p['widget_id']) && $p['widget_id'] ) ? $p['widget_id'] : '';
+//         if($widget_id=='text-3') {
+//             $button_name = get_field('cta_button_name', 'widget_' . $widget_id);
+//             $button_link = get_field('cta_button_link', 'widget_' . $widget_id);
+//             $before_widget = $p['before_widget'];
+//             if( $button_name && $button_link ) {
+//                 $params[$k]['after_widget'] = '<div class="button"><a class="widget-button" href="'.$button_link.'">' . $button_name . '</a></div>' . $params[$k]['after_widget'];
+//             }
+//         }
+//     }
+//     return $params;
+// }

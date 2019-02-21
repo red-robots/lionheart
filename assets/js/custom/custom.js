@@ -35,7 +35,16 @@ jQuery(document).ready(function ($) {
     	smoothHeight: false,
         controlNav: true,               
         directionNav: false,
-        slideshowSpeed: 8000
+        slideshowSpeed: 10000
+	});
+
+	$('#testimonial_widget').flexslider({
+    	selector: '.widget-testimonial > .entry',
+    	animation: "fade",
+    	smoothHeight: false,
+        controlNav: false,               
+        directionNav: false,
+        slideshowSpeed: 10000
 	});
 
 
