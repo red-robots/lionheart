@@ -1934,7 +1934,8 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong{overflow-wrap:normal;word-wrap:normal;-
 .content-area-sidebar{padding-bottom:40px}
 .content-area-sidebar.has-banner{padding-top:40px}
 .content-area-sidebar.has-banner #secondary{margin-top:15px}
-.content-area-sidebar.no-banner{padding-top:30px;margin-top:15px;border-top:2px solid #303042}
+.content-area-sidebar.no-banner{margin-top:15px}
+.content-area-sidebar.no-banner .content-inner{padding-top:30px;border-top:2px solid #303042}
 .content-area-sidebar.no-banner #secondary{margin-top:50px}
 @media screen and (min-width:600px){.content-area-sidebar.no-banner #secondary{margin-top:65px}
 }.content-area-sidebar .widget{margin-bottom:40px}
@@ -1946,8 +1947,9 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong{overflow-wrap:normal;word-wrap:normal;-
 .widget-button a{display:inline-block;padding:8px 20px;background:#bf1e2d;color:#FFF;text-transform:uppercase;font-size:14px;font-weight:300}
 .widget-testimonial{width:100%;float:left;position:relative}
 .widget-testimonial p{margin-top:0;margin-bottom:13px}
-.widget-testimonial .slide-item{position:absolute !important;top:0;opacity:0}
-.widget-testimonial .slide-item.flex-active-slide{opacity:1}
+.widget-testimonial .entry{margin-bottom:20px}
+.widget-testimonial .slide-item{display:none !important;opacity:0}
+.widget-testimonial .slide-item.flex-active-slide{display:block !important;opacity:1}
 .widget-testimonial .text{font-size:12px}
 .widget-testimonial .author{font-size:11px;font-weight:600;position:relative;top:-8px;text-align:right}
 .blog .format-aside .entry-title,.archive .format-aside .entry-title{display:none}

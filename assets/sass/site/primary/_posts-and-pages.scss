@@ -512,9 +512,11 @@
 		}
 	}
 	&.no-banner {
-		padding-top: 30px;
 		margin-top: 15px;
-		border-top: 2px solid $color-navy;
+		.content-inner {
+			padding-top: 30px;
+			border-top: 2px solid $color-navy;
+		}
 		#secondary {
 			margin-top: 50px;
 			@media screen and (min-width: $tabwidth) {
@@ -567,11 +569,14 @@
 		margin-top: 0;
 		margin-bottom: 13px;
 	}
+	.entry {
+		margin-bottom: 20px;
+	}
 	.slide-item {
-		position: absolute!important;
-		top: 0;
+		display: none!important;
 		opacity: 0;
 		&.flex-active-slide {
+			display: block!important;
 			opacity: 1;
 		}
 	}

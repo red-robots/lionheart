@@ -3,7 +3,7 @@ $banner_image = get_field('subpage_banner');
 get_header(); ?>
 
 	<div id="primary" class="content-area-sidebar clear <?php echo ($banner_image) ? 'has-banner':'no-banner';?>">
-		<div class="wrapper">
+		<div class="wrapper content-inner">
 			<main id="main" class="site-main content-area" role="main">
 				<?php while ( have_posts() ) : the_post(); ?>
 
