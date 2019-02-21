@@ -20,6 +20,13 @@ function js_custom_init() {
             'single'    => 'Testimonial',
             'supports'  => array('title','editor','thumbnail')
         ),
+        array(
+            'post_type' => 'properties',
+            'menu_name' => 'Properties',
+            'plural'    => 'Properties',
+            'single'    => 'Property',
+            'supports'  => array('title','editor')
+        ),
     );
     
     if($post_types) {
@@ -140,6 +147,12 @@ function set_custom_cpt_columns($columns) {
         $columns['photo'] = __( 'Photo', 'acstarter' );
         $columns['date'] = __( 'Date', 'acstarter' );
     }
+
+    if($post_type=='properties') {
+        unset( $columns['date'] );
+        $columns['photo'] = __( 'Photo', 'acstarter' );
+        $columns['date'] = __( 'Date', 'acstarter' );
+    }
     
     return $columns;
 }
@@ -151,7 +164,7 @@ function custom_post_column( $column, $post_id ) {
     $query = isset($wp_query->query) ? $wp_query->query : '';
     $post_type = ( isset($query['post_type']) ) ? $query['post_type'] : '';
     
-    if($post_type=='team') {
+    if($post_type=='team' || $post_type=='properties') {
         switch ( $column ) {
             case 'photo' :
                 $img = get_field('photo',$post_id);

@@ -225,11 +225,11 @@
 		background: #FFF;
 		position: relative;
 		@media screen and (min-width: $tabwidth) {
-			height: 330px;
+			// height: 330px;
 		}
 		@media screen and (min-width: $midwidth) {
 			overflow: hidden;
-			height: 310px;
+			// height: 310px;
 		}
 	}
 	#sb_instagram,
@@ -351,29 +351,26 @@
 	}
 }
 .home-bottom-content .widget_mywp_widget .textwidget {
-	height: auto;
+	// height: auto;
 	padding-top: 20px;
 	@media screen and (min-width: $midwidth) {
 		padding-top: 0;
-		height: 310px;
+		// height: 310px;
 	}
 }
-.widget_myinsta_widget {
-	.textwidget {
-		background: transparent;
-	}
-}
+
 .insta_widget_info {
 	width: 100%;
 	position: relative;
-	height: 340px;
-	@media screen and (min-width: $tabwidth) {
-		height: 600px;
-	}
-	@media screen and (min-width: $midwidth) {
-		height: 310px;
-	}
+	// height: 340px;
+	// @media screen and (min-width: $tabwidth) {
+	// 	height: 600px;
+	// }
+	// @media screen and (min-width: $midwidth) {
+	// 	height: 310px;
+	// }
 }
+.insta_widget_info,
 .instagram-list,
 .insta-slide,
 .insta-item,
@@ -589,5 +586,51 @@
 		position: relative;
     	top: -8px;
     	text-align: right;
+	}
+}
+.property-search-iframe {
+	width: 100%;
+	height: 750px;
+}
+.site-main {
+	a {
+		text-decoration: none;
+		color: $color-red;
+		@include transition(all ease-out .3s);
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+}
+.listing-info {
+	.textwrap {
+		padding: 15px 20px 20px;
+		font-size: 12px;
+		line-height: 1.5;
+	}
+	p {
+		margin-top: 0;
+		margin-bottom: 15px;
+	}
+	.property-name {
+		margin: 0 0 15px;
+		font-size: 16px;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	.button {
+		margin-top: 18px;
+	}
+	.button a {
+		display: inline-block;
+		padding: 5px 20px;
+		color: #FFF;
+		font-size: 13px;
+		font-weight: 300;
+		text-transform: uppercase;
+		background: $color-navy;
+		&:hover {
+			background: $color-red;
+		}
 	}
 }

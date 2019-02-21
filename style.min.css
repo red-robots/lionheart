@@ -1876,8 +1876,7 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong{overflow-wrap:normal;word-wrap:normal;-
 }.home-bottom-content .widget img{width:100%;height:auto}
 .home-bottom-content .widget:last-child{margin-bottom:0}
 .home-bottom-content .textwidget{box-sizing:border-box;background:#FFF;position:relative}
-@media screen and (min-width:600px){.home-bottom-content .textwidget{height:330px}
-}@media screen and (min-width:900px){.home-bottom-content .textwidget{overflow:hidden;height:310px}
+@media screen and (min-width:900px){.home-bottom-content .textwidget{overflow:hidden}
 }.home-bottom-content #sb_instagram,.home-bottom-content #sb_instagram #sbi_images{margin:0 0 !important;padding:0 0 !important}
 .home-bottom-content #sb_instagram{max-width:100% !important}
 .home-bottom-content #sbi_images{display:none !important}
@@ -1899,13 +1898,10 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong{overflow-wrap:normal;word-wrap:normal;-
 @media screen and (min-width:900px){.testimonial_widget_text .button{position:absolute;bottom:20px;left:0;padding-bottom:0;padding-top:0}
 }.testimonial_widget_text .button a{display:inline-block;padding:5px 20px;color:#FFF;font-size:13px;font-weight:300;text-transform:uppercase;background:#303042}
 .testimonial_widget_text .button a:hover{background:#bf1e2d}
-.home-bottom-content .widget_mywp_widget .textwidget{height:auto;padding-top:20px}
-@media screen and (min-width:900px){.home-bottom-content .widget_mywp_widget .textwidget{padding-top:0;height:310px}
-}.widget_myinsta_widget .textwidget{background:transparent}
-.insta_widget_info{width:100%;position:relative;height:340px}
-@media screen and (min-width:600px){.insta_widget_info{height:600px}
-}@media screen and (min-width:900px){.insta_widget_info{height:310px}
-}.instagram-list,.insta-slide,.insta-item,.insta-nopost{width:100%;height:100%;float:left;overflow:hidden}
+.home-bottom-content .widget_mywp_widget .textwidget{padding-top:20px}
+@media screen and (min-width:900px){.home-bottom-content .widget_mywp_widget .textwidget{padding-top:0}
+}.insta_widget_info{width:100%;position:relative}
+.insta_widget_info,.instagram-list,.insta-slide,.insta-item,.insta-nopost{width:100%;height:100%;float:left;overflow:hidden}
 .insta-nopost{background-image:url("images/nopost.png");background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#FFF}
 .insta-item{position:absolute !important;top:0;left:0;width:100%}
 .insta-item.flex-active-slide{z-index:50;opacity:1}
@@ -1952,6 +1948,15 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong{overflow-wrap:normal;word-wrap:normal;-
 .widget-testimonial .slide-item.flex-active-slide{display:block !important;opacity:1}
 .widget-testimonial .text{font-size:12px}
 .widget-testimonial .author{font-size:11px;font-weight:600;position:relative;top:-8px;text-align:right}
+.property-search-iframe{width:100%;height:750px}
+.site-main a{text-decoration:none;color:#bf1e2d;-webkit-transition:all ease-out .3s;transition:all ease-out .3s}
+.site-main a:hover{opacity:.5}
+.listing-info .textwrap{padding:15px 20px 20px;font-size:12px;line-height:1.5}
+.listing-info p{margin-top:0;margin-bottom:15px}
+.listing-info .property-name{margin:0 0 15px;font-size:16px;font-weight:700;text-transform:uppercase}
+.listing-info .button{margin-top:18px}
+.listing-info .button a{display:inline-block;padding:5px 20px;color:#FFF;font-size:13px;font-weight:300;text-transform:uppercase;background:#303042}
+.listing-info .button a:hover{background:#bf1e2d}
 .blog .format-aside .entry-title,.archive .format-aside .entry-title{display:none}
 .comment-content a{word-wrap:break-word}
 .bypostauthor{display:block}

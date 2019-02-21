@@ -1,4 +1,8 @@
 <?php
+/* 
+ * Template Name: Property Search
+ */
+
 $banner_image = get_field('subpage_banner');
 get_header(); ?>
 
@@ -10,6 +14,12 @@ get_header(); ?>
 						<?php the_content(); ?>
 					<?php } else { ?>
 						<?php get_template_part( 'template-parts/content', 'page' ); ?>
+					<?php } ?>
+
+					<?php 
+					$iframe = get_field('property_search_iframe');
+					if($iframe) { ?>
+						<div class="property-search-iframe"><?php echo $iframe; ?></div>
 					<?php } ?>
 
 				<?php endwhile;  ?>

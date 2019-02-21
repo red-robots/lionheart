@@ -1,9 +1,143 @@
 <?php
 function wpb_load_widget() {
+    register_widget( 'featlisting_widget' );
     register_widget( 'mywp_widget' );
     register_widget( 'myinsta_widget' );
 }
 add_action( 'widgets_init', 'wpb_load_widget' );
+
+//FEATURED LISTING
+class featlisting_widget extends WP_Widget {
+    function __construct() {
+        parent::__construct(
+        'featlisting_widget', 
+        __('Featured Listings', 'featlisting_widget_domain'), 
+        array( 'description' => __( 'Display featured listing', 'featlisting_widget_domain' ), ) 
+        );
+    }
+ 
+    // Creating widget front-end 
+    public function widget( $args, $instance ) {
+        $title = apply_filters( 'widget_title', $instance['title'] );
+         
+        // before and after widget arguments are defined by themes
+        echo $args['before_widget'];
+        if ( ! empty( $title ) )
+        echo $args['before_title'] . $title . $args['after_title'];
+        
+        //Output
+        $html_content = '';
+        $property_page_ids = ( isset( $instance[ 'property_page_id' ] ) ) ? $instance[ 'property_page_id' ] : '';
+        $selected_ids = ($property_page_ids) ? explode(",",$property_page_ids) : array();
+        if($selected_ids) {
+            foreach($selected_ids as $id) {
+                if( $post = get_post($id) ) {
+                    $post_id = $post->ID;
+                    $post_title = $post->post_title;
+                    $img = get_field('photo',$post_id);
+                    $description = get_field('description',$post_id);
+                    $link = get_field('property_link',$post_id);
+                    $site_url = get_site_url();
+                    $parts_a = parse_url($site_url);
+                    $host_a = $parts_a['host'];
+                    $target = '';
+                    if($link) {
+                        $parts_b = parse_url($link);
+                        $host_b = $parts_b['host'];
+                        if($host_a!=$host_b) {
+                            $target = ' target="_blank"';
+                        }
+                    }
+
+                    $html_content .= '<div class="textwidget"><div class="listing-info">';
+                        if($img) {
+                            $html_content .= '<div class="imagewrap"><img src="'.$img['url'].'" alt="'.$img['title'].'" /></div>';
+                        }
+                        $html_content .= '<div class="textwrap clear">';
+                        $html_content .= '<h3 class="property-name">'.$post_title.'</h3>';
+                        if($description) {
+                            $html_content .= '<div class="description">'.$description.'</div>';
+                        }
+                        if($link) {
+                            $html_content .= '<div class="button"><a href="'.$link.'"'.$target.'>Read More</a></div>';
+                        }
+                        $html_content .= '</div>';
+                    $html_content .= '</div></div>';
+                }
+            }
+        }
+
+        
+        echo $html_content;
+        echo $args['after_widget'];
+    }
+             
+    // Widget Backend 
+    public function form( $instance ) {
+        global $wpdb;
+        $title = ( isset( $instance[ 'title' ] ) ) ? $instance[ 'title' ] : '';
+        $property_page_ids = ( isset( $instance[ 'property_page_id' ] ) ) ? $instance[ 'property_page_id' ] : '';
+        $selected_ids = ($property_page_ids) ? explode(",",$property_page_ids) : array();
+        /* Query Pages */
+        $result = $wpdb->get_results( "SELECT ID,post_title FROM $wpdb->posts WHERE post_type = 'properties' AND post_status='publish' ORDER BY post_title ASC" );
+        
+        $the_options = array();
+        if($selected_ids) {
+            if($result) {
+                $array1 = array();
+                $array2 = array();
+                foreach($result as $k=>$row) {
+                    $v_id = $row->ID;
+                    if(!in_array($v_id, $selected_ids)) {
+                        $array2[$v_id] = $row;
+                    }
+                }
+
+                foreach($selected_ids as $id) {
+                    foreach($result as $row) {
+                        $v_id = $row->ID;
+                        if($id==$v_id) {
+                            $array1[$id] = $row;
+                        }
+                    }
+                }
+
+                $the_options = array_merge($array1,$array2);
+            }
+        } else {
+            $the_options = $result;
+        }
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'property_page_id' ); ?>"><?php _e( 'Featured Listing:' ); ?></label> 
+            <input type="hidden" id="hidden_<?php echo $this->get_field_id( 'property_page_id' ); ?>" class="page_ids_input" name="<?php echo $this->get_field_name( 'property_page_id' ); ?>" value="<?php echo esc_attr( $property_page_id ); ?>" />
+            <select id="<?php echo $this->get_field_id( 'property_page_id' ); ?>" class="jsselect2 select-property-page" multiple="multiple" style="width:100%;">
+                <option value="-1">Select...</option>
+                <?php if($the_options) { ?>
+                    <?php foreach($the_options as $row) { 
+                        $page_id = $row->ID; $page_name = $row->post_title; 
+                        $is_selected = ( $selected_ids && in_array($page_id,$selected_ids) ) ? ' selected':'';
+                        ?>
+                        <option value="<?php echo $page_id; ?>"<?php echo $is_selected; ?>><?php echo $page_name; ?></option>
+                    <?php } ?>
+                <?php } ?>
+            </select>
+        </p>
+        <?php
+    }
+         
+    // Updating widget replacing old instances with new
+    public function update( $new_instance, $old_instance ) {
+        $instance = array();
+        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        $instance['property_page_id'] = ( ! empty( $new_instance['property_page_id'] ) ) ? strip_tags( $new_instance['property_page_id'] ) : '';
+        return $instance;
+    }
+}
  
 // TESTIMONIAL WIDGET
 class mywp_widget extends WP_Widget {
@@ -115,7 +249,7 @@ class myinsta_widget extends WP_Widget {
         parent::__construct(
         'myinsta_widget', 
         __('Instagram Feeds', 'mywp_widget_domain'), 
-        array( 'description' => __( 'Display instagram feeds', 'myinsta_widget_domain' ), ) 
+        array( 'description' => __( 'Display Instagram feeds', 'myinsta_widget_domain' ), ) 
         );
     }
 
@@ -180,6 +314,7 @@ class myinsta_widget extends WP_Widget {
     }
 }
 
+
 function my_custom_widgets_admin_head() { ?>
     <style type="text/css">
         span.insta_caption {
@@ -193,10 +328,101 @@ function my_custom_widgets_admin_head() { ?>
             top: 0;
             left: 0;
         }
+        .widget .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            margin-top: 3px;
+            margin-bottom: 0;
+        }
+        .widget .select2-search.select2-search--inline {
+            margin-bottom: 0;
+        }
     </style>
 <?php
 }
 add_action( 'admin_head', 'my_custom_widgets_admin_head' );
+
+add_action('admin_footer', 'my_admin_footer_function', 100);
+function my_admin_footer_function() { 
+    echo _fire_widget_js(); 
+}
+
+function _fire_widget_js() {
+    ob_start(); ?>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {           
+
+           jQuery(document).on("change",".jsselect2",function(e){
+                var s_id = e.target.id;
+                var parent = $('#'+s_id).parent('.widget');
+                var options = $(this).val();
+                var ids = '';
+                if(options) {
+                    ids = options.join(',');
+                }
+                $('#hidden_' + s_id).val(ids);
+           });
+
+        });
+
+        ( function( $ ){
+            function initJsSelect2( widget ) {
+                widget.find( '.jsselect2' ).select2({
+                    placeholder: "Select...",
+                    allowClear: true,
+                    sorter: function(results) {
+                        var query = $('.select2-search__field').val().toLowerCase();
+                        return results.sort(function(a, b) {
+                          return a.text.toLowerCase().indexOf(query) -
+                            b.text.toLowerCase().indexOf(query);
+                        });
+                      }
+                });
+
+                var updateIndex = function(e, ui) {
+                    var selections = widget.find( 'select.jsselect2' );
+                    var ids = '';
+                    var new_ids = [];
+                    widget.find("li.select2-selection__choice").each(function(){
+                        var txt = $(this).attr('title');
+                        selections.find('option').each(function(){
+                            var option_text = $(this).text();
+                            var option_value = $(this).val();
+                            if(txt==option_text) {
+                                new_ids.push(option_value);
+                            }
+                        });
+                    });
+                    if(new_ids.length>0) {
+                        ids = new_ids.join(',');
+                    }
+                    widget.find("input.page_ids_input").val(ids);
+                    widget.find("input.page_ids_input").trigger("change");
+                };
+
+                widget.find("ul.select2-selection__rendered").sortable({
+                  containment: 'parent',
+                  stop: updateIndex
+                });
+            }
+
+            function onFormUpdate( event, widget ) {
+                initJsSelect2( widget );
+            }
+
+            $( document ).on( 'widget-added widget-updated', onFormUpdate );
+
+            $( document ).ready( function() {
+                $( '#widgets-right .widget:has(.jsselect2)' ).each( function () {
+                        initJsSelect2( $( this ) );
+                } );
+            } );
+        }( jQuery ) );
+
+    </script>
+    <?php
+    $js_script = ob_get_contents();
+    ob_end_clean();
+    return $js_script;
+}
 
 
 function my_instagram_widgets_footer() { 
