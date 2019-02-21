@@ -1,5 +1,6 @@
 <?php
 $setup = get_instagram_setup();
+print_r($setup);
 if($setup) {
     $num_photos = ($setup['sb_instagram_num']) ? $setup['sb_instagram_num'] : 4;
     $follow_btn_text = $setup['sb_instagram_follow_btn_text'];
