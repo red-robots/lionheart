@@ -167,7 +167,7 @@ function generate_sitemap($menuName='top-menu',$pageWithCats=null,$orderByNavi=n
                         if($taxo) {
                             $o_terms = get_terms( array(
                                 'taxonomy' => $taxo,
-                                'hide_empty' => false,
+                                'hide_empty' => true,
                             ) );
                             if($o_terms){
                                 foreach ($o_terms as $t) {
