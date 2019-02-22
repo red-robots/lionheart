@@ -776,3 +776,13 @@
 		}
 	}
 }
+.entry-header.has-jobtitle {
+	.entry-title {
+		margin-bottom: 0;
+	}
+	.jobtitle {
+		font-size: 13px;
+		font-weight: 600;
+		margin-bottom: 25px;
+	}
+}

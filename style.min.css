@@ -1994,6 +1994,8 @@ body.open-mobile-menu .mobile-only{display:block}
 .single-team-content .contact-info .icon{position:absolute;top:1px;left:0;color:#b0b0b0}
 .single-team-content .contact-info a{color:#303042;text-decoration:none;-webkit-transition:all ease-out .3s;transition:all ease-out .3s}
 .single-team-content .contact-info a:hover{opacity:.5}
+.entry-header.has-jobtitle .entry-title{margin-bottom:0}
+.entry-header.has-jobtitle .jobtitle{font-size:13px;font-weight:600;margin-bottom:25px}
 .blog .format-aside .entry-title,.archive .format-aside .entry-title{display:none}
 .comment-content a{word-wrap:break-word}
 .bypostauthor{display:block}

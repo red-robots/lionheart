@@ -15,8 +15,11 @@ get_header(); ?>
 					?>
 
 					<div class="content-left">
-						<header class="entry-header">
+						<header class="entry-header<?php echo ($team_title) ? ' has-jobtitle':''; ?>">
 							<h1 class="entry-title"><?php the_title(); ?></h1>
+							<?php if($team_title) { ?>
+							<div class="jobtitle"><?php echo $team_title; ?></div>
+							<?php } ?>
 						</header>
 						<?php the_content(); ?>
 					</div>
