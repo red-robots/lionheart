@@ -47,7 +47,6 @@ jQuery(document).ready(function ($) {
         slideshowSpeed: 10000
 	});
 
-
 	/*
 	*
 	*	Colorbox
@@ -64,12 +63,15 @@ jQuery(document).ready(function ($) {
 	*	Isotope with Images Loaded
 	*
 	------------------------------------*/
-	var $container = $('#container').imagesLoaded( function() {
+	var $container = $('#container,.grid').imagesLoaded( function() {
   	$container.isotope({
     // options
-	 itemSelector: '.item',
+	 itemSelector: '.grid__item',
 		  masonry: {
-			gutter: 15
+				gutter: 0,
+				percentPosition: true,
+				visibleStyle: { transform: 'translateY(0)', opacity: 1 },
+				hiddenStyle: { transform: 'translateY(100px)', opacity: 0 },
 			}
  		 });
 	});

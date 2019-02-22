@@ -2004,6 +2004,16 @@ body.open-mobile-menu .mobile-only{display:block}
 .page-link-list ul li:before{content:"";display:block;width:5px;height:5px;background:#bf1e2d;position:absolute;top:8px;left:0}
 .page-link-list ul li ul{padding-bottom:4px;padding-top:4px;padding-left:10px}
 .page-link-list ul li li{margin-bottom:0}
+.testimonial-outer-wrapper{position:relative}
+.testimonial-list{margin-top:30px}
+@media screen and (min-width:600px){.testimonial-list{-webkit-align-content:flex-start;-ms-flex-line-pack:start;align-content:flex-start;-webkit-align-items:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}
+}.testimonial-list .col{margin-bottom:30px;background:#FFF}
+.testimonial-list .col-3,.testimonial-list .grid__col-sizer{width:100%}
+@media screen and (min-width:600px){.testimonial-list .col-3,.testimonial-list .grid__col-sizer{width:50%}
+}@media screen and (min-width:900px){.testimonial-list .col-3,.testimonial-list .grid__col-sizer{width:33.333%}
+}.testimonial-list .inner{box-sizing:border-box;padding:20px;border:1px solid #303042;box-shadow:0 0 10px 0 rgba(0,0,0,0.32)}
+.testimonial-list .name{margin:0 0 10px;font-size:18px;font-weight:600}
+.testimonial-list .copy p{margin-top:0}
 .blog .format-aside .entry-title,.archive .format-aside .entry-title{display:none}
 .comment-content a{word-wrap:break-word}
 .bypostauthor{display:block}
