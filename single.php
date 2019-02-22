@@ -1,5 +1,6 @@
 <?php
 $banner_image = get_field('subpage_banner');
+$post_type = get_post_type();
 get_header(); ?>
 
 	<div id="primary" class="content-area-sidebar single-page-content clear <?php echo ($banner_image) ? 'has-banner':'no-banner';?>">
