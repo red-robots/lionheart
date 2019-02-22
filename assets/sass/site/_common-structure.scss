@@ -90,6 +90,17 @@ body {
 		font-size: 20px;
 		font-weight: bold;
 	}
+	.mobile-only {
+		display: none;
+	}
+}
+body.open-mobile-menu {
+	.desktop-logo {
+		display: none;
+	}
+	.mobile-only {
+		display: block;
+	}
 }
 .site-header {
 	position: relative;
@@ -106,12 +117,12 @@ body {
 	float: right;
 	text-align: right;
 	position: relative;
-	right: 100px;
+	padding-right: 80px;
 	z-index: 10;
 	@media screen and (min-width: $tabwidth) {
 		width: 150px;
 		top: 13px;
-		right: 0;
+		padding-right: 0;
 	}
 	a {
 		display: inline-block;
@@ -127,6 +138,12 @@ body {
 	.phone .icon {
 		display: inline-block;
 		transform: rotateY(180deg);
+	}
+	.toggleMenu {
+		display: block;
+		@media screen and (min-width: $tabwidth) {
+			display: none;
+		}
 	}
 }
 .subpage .site-header .social-media {

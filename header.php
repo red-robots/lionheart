@@ -56,7 +56,12 @@
 			<div class="logo-section clear">
 				<div class="logo">
 					<?php if($the_logo) { ?>
-						<a class="img" href="<?php echo get_site_url()?>"><img src="<?php echo $the_logo; ?>" alt="<?php echo get_bloginfo('name'); ?>" /></a>
+						<a class="img" href="<?php echo get_site_url()?>">
+							<img class="desktop-logo" src="<?php echo $the_logo; ?>" alt="<?php echo get_bloginfo('name'); ?>" />
+							<?php if($home_logo) { ?>
+							<img class="mobile-only" src="<?php echo $home_logo['url']; ?>" alt="<?php echo get_bloginfo('name'); ?>" />
+							<?php } ?>
+						</a>
 					<?php } else { ?>
 						<a class="text" href="<?php echo get_site_url()?>"><?php echo get_bloginfo('name'); ?></a>
 					<?php } ?>
@@ -71,6 +76,7 @@
 		        			<?php } ?>
 		        		<?php } ?>
 		        	<?php } ?>
+		        	<a href="#" id="toggleMenu" class="toggleMenu"><span></span></a>
 		        </div>
 			</div>
 	
@@ -79,7 +85,6 @@
 			</nav><!-- #site-navigation -->
 
 			<nav id="mobile-navigation" class="mobile-main-navigation <?php echo $home_class;?>">
-				<a href="#" id="toggleMenu" class="toggleMenu"><span></span></a>
 				<div class="mobile-nav-inner clear"><?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'mobile-primary-menu','container_class'=>'mobile_nav' ) ); ?></div>
 			</nav>
 		</div><!-- wrapper -->

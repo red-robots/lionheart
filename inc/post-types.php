@@ -11,7 +11,7 @@ function js_custom_init() {
             'plural'    => 'Team',
             'single'    => 'Team',
             'menu_icon' => 'dashicons-groups',
-            'supports'  => array('title','editor','thumbnail')
+            'supports'  => array('title','editor')
         ),
         array(
             'post_type' => 'testimonial',
