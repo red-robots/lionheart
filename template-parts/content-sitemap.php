@@ -2,7 +2,6 @@
 //generate_sitemap($menuName='top-menu',$pageWithCats=null,$orderByNavi=null)
 $pageWithCats[] = array(
             'id'=>105,
-            'post_type'=>'post',
             'taxonomy'=>'category'
         );
 $links = generate_sitemap('Main Menu',$pageWithCats);
