@@ -37,18 +37,20 @@
 			$the_logo = $subpage_logo['url'];
 		}
 
-		$social['phone'] = array(
-						'icon'=>'fas fa-phone',
-						'url'=> get_field('phone','option')
-					);
-		$social['facebook'] = array(
-						'icon'=>'fab fa-facebook-f',
-						'url'=> get_field('facebook_url','option')
-					);
-		$social['instagram'] = array(
-						'icon'=>'fab fa-instagram',
-						'url'=> get_field('instagram_url','option')
-					);
+		$social = array();
+		// $social['phone'] = array(
+		// 				'icon'=>'fas fa-phone',
+		// 				'url'=> get_field('phone','option')
+		// 			);
+		// $social['facebook'] = array(
+		// 				'icon'=>'fab fa-facebook-f',
+		// 				'url'=> get_field('facebook_url','option')
+		// 			);
+		// $social['instagram'] = array(
+		// 				'icon'=>'fab fa-instagram',
+		// 				'url'=> get_field('instagram_url','option')
+		// 			);
+		
 	?>
 
 	<header id="masthead" class="site-header" role="banner">
@@ -67,14 +69,16 @@
 					<?php } ?>
 		        </div>
 		        <div class="social-media">
-		        	<?php foreach($social as $type=>$s) { ?>
-		        		<?php if($s['url']) { ?>
-		        			<?php if($type=='phone') { ?>
-		        				<a class="<?php echo $type;?>" href="tel:<?php echo format_phone_number($s['url'])?>"><span class="icon"><i class="<?php echo $s['icon']?>"></i></span></a>
-		        			<?php } else { ?>
-		        				<a class="<?php echo $type;?>" href="<?php echo $s['url']?>" target="_blank"><i class="<?php echo $s['icon']?>"></i></a>
-		        			<?php } ?>
-		        		<?php } ?>
+		        	<?php if($social) { ?>
+			        	<?php foreach($social as $type=>$s) { ?>
+			        		<?php if($s['url']) { ?>
+			        			<?php if($type=='phone') { ?>
+			        				<a class="<?php echo $type;?>" href="tel:<?php echo format_phone_number($s['url'])?>"><span class="icon"><i class="<?php echo $s['icon']?>"></i></span></a>
+			        			<?php } else { ?>
+			        				<a class="<?php echo $type;?>" href="<?php echo $s['url']?>" target="_blank"><i class="<?php echo $s['icon']?>"></i></a>
+			        			<?php } ?>
+			        		<?php } ?>
+			        	<?php } ?>
 		        	<?php } ?>
 		        	<a href="#" id="toggleMenu" class="toggleMenu"><span></span></a>
 		        </div>

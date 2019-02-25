@@ -1697,7 +1697,7 @@ a:hover,a:active{outline:0}
 .mobile-nav-inner .mobile_nav{position:relative;z-index:50;width:100%}
 .open-mobile-menu .mobile-nav-inner{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);z-index:8}
 .toggleMenu:focus,.toggleMenu:active{outline:0}
-.toggleMenu{display:block;width:30px;height:30px;cursor:pointer;position:absolute !important;top:0;right:0;z-index:202;outline:0}
+.toggleMenu{display:block;width:30px;height:30px;cursor:pointer;position:absolute !important;top:4px;right:5px;z-index:202;outline:0}
 .toggleMenu:hover{opacity:1 !important}
 .toggleMenu span,.toggleMenu span:before,.toggleMenu span:after{display:block;width:100%;height:2px;background:#303042;position:absolute;-webkit-transition:all ease-out .3s;transition:all ease-out .3s}
 .toggleMenu span{top:14px;left:0}
@@ -1819,9 +1819,9 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong{overflow-wrap:normal;word-wrap:normal;-
 .widget-area{width:100%;margin:0 auto}
 @media screen and (min-width:600px){.widget-area{width:26%;float:right;margin:0}
 }@media screen and (min-width:1200px){}
-.logo-section{margin-top:18px;margin-bottom:12px}
-.logo{width:150px;float:left;position:relative;z-index:12}
-@media screen and (min-width:600px){.logo{width:270px}
+.logo-section{margin-top:18px;margin-bottom:12px;position:relative}
+.logo{width:185px;float:left;position:relative;z-index:12}
+@media screen and (min-width:600px){.logo{margin:0 auto;width:270px;float:none}
 }.logo a{display:block;text-decoration:none}
 .logo .img,.logo img{display:block;width:100%;float:left}
 .logo img{height:auto}
@@ -1832,7 +1832,7 @@ body.open-mobile-menu .mobile-only{display:block}
 .site-header{position:relative;z-index:100;width:100%}
 .home .site-header{position:absolute;top:0;left:0}
 .site-header .social-media{display:inline-block;float:right;text-align:right;position:relative;padding-right:80px;z-index:10}
-@media screen and (min-width:600px){.site-header .social-media{width:150px;top:13px;padding-right:0}
+@media screen and (min-width:600px){.site-header .social-media{width:150px;top:13px;padding-right:0;position:absolute;right:0}
 }.site-header .social-media a{display:inline-block;color:#FFF;font-size:20px;position:relative;margin-left:10px;-webkit-transition:all ease-out .3s;transition:all ease-out .3s}
 .site-header .social-media a:hover{opacity:.5}
 .site-header .social-media .phone .icon{display:inline-block;-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}
@@ -1941,10 +1941,12 @@ body.open-mobile-menu .mobile-only{display:block}
 .content-area-sidebar{padding-bottom:40px}
 .content-area-sidebar.has-banner{padding-top:40px}
 .content-area-sidebar.has-banner #secondary{margin-top:15px}
-.content-area-sidebar.no-banner{margin-top:15px}
-.content-area-sidebar.no-banner .content-inner{padding-top:30px;border-top:2px solid #303042}
-.content-area-sidebar.no-banner #secondary{margin-top:50px}
+@media screen and (min-width:600px){.content-area-sidebar.no-banner{margin-top:0}
+}.content-area-sidebar.no-banner .content-inner{padding-top:30px;border-top:2px solid #303042}
+.content-area-sidebar.no-banner #secondary{margin-top:35px}
 @media screen and (min-width:600px){.content-area-sidebar.no-banner #secondary{margin-top:65px}
+}.content-area-sidebar #secondary{border-top:1px dotted #303042;padding-top:30px}
+@media screen and (min-width:600px){.content-area-sidebar #secondary{border-top:0;padding-top:0}
 }.content-area-sidebar .widget{margin-bottom:40px}
 .content-area-sidebar .widget-title{margin:0 0 10px;font-size:18px;font-weight:600;text-transform:uppercase;line-height:1.2}
 .content-area-sidebar .content-area h2{font-size:22px}

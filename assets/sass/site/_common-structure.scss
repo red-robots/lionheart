@@ -65,14 +65,17 @@ body {
 .logo-section {
 	margin-top: 18px;
 	margin-bottom: 12px;
+	position: relative;
 }
 .logo {
-	width: 150px;
+	width: 185px;
 	float: left;
 	position: relative;
 	z-index: 12;
 	@media screen and (min-width: $tabwidth) {
+		margin: 0 auto;
 		width: 270px;
+		float: none;
 	}
 	a {
 		display: block;
@@ -123,6 +126,8 @@ body.open-mobile-menu {
 		width: 150px;
 		top: 13px;
 		padding-right: 0;
+		position: absolute;
+		right: 0;
 	}
 	a {
 		display: inline-block;
