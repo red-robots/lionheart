@@ -46,6 +46,7 @@ if($setup) {
                         data: {access_token: token, count: num_photos},
                         success: function(response){
                             var content = '';
+                            console.log(response);
                             if(response.data!=undefined) {
                                 var obj = response.data;
                                 if( obj.length > 0 ) {

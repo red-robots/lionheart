@@ -66,7 +66,7 @@ jQuery(document).ready(function ($) {
     		onOpenBefore: function () {
     			$('.jconfirm').addClass('phone_col');
     		},
-    		onClose: function () {
+    		onDestroy: function () {
     			$('.jconfirm').removeClass('phone_col');
     		}
 		});

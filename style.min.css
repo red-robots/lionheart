@@ -2157,7 +2157,7 @@ body.open-mobile-menu .mobile-only{display:block}
 .widget-testimonial .slide-item.flex-active-slide{display:block !important;opacity:1}
 .widget-testimonial .text{font-size:12px}
 .widget-testimonial .author{font-size:11px;font-weight:600;position:relative;top:-8px;text-align:right}
-.property-search-iframe{width:100%;height:750px}
+.property-search-iframe{width:100%;height:900px}
 .site-main a{text-decoration:none;color:#bf1e2d;-webkit-transition:all ease-out .3s;transition:all ease-out .3s}
 .site-main a:hover{opacity:.5}
 .listing-info .textwrap{padding:15px 20px 20px;font-size:12px;line-height:1.5}
@@ -2175,14 +2175,14 @@ body.open-mobile-menu .mobile-only{display:block}
 .team-list .flex-container .top-info{border-top:1px solid #838383;border-bottom:1px solid #838383;margin-top:12px;padding-top:8px;padding-bottom:8px}
 .team-list .flex-container .jobtitle{line-height:1.2;font-size:13px;font-weight:600;color:#838383}
 .team-list .flex-container .staffname{margin:0 0 4px;font-size:20px;font-weight:500;line-height:1.2;letter-spacing:-1px;color:#303042}
-.team-list .flex-container .contact-info{padding-top:15px;padding-bottom:20px}
+.team-list .flex-container .contact-info{padding-top:15px;padding-bottom:0}
 .team-list .flex-container .contact-info a{display:inline-block;color:#303042;font-size:20px;margin-left:6px;margin-right:6px}
 .team-list .flex-container .contact-info .phone{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}
 .team-list .flex-container .contact-info .phone.desktopview{display:inline-block}
 @media screen and (max-device-width:1200px){.team-list .flex-container .contact-info .phone.desktopview{display:none}
 }.team-list .flex-container .contact-info .phone.mobileview{display:none}
 @media screen and (max-device-width:1200px){.team-list .flex-container .contact-info .phone.mobileview{display:inline-block}
-}.team-list .flex-container .button{margin-top:20px;margin-bottom:10px}
+}.team-list .flex-container .button{margin-top:33px;margin-bottom:10px}
 .team-list .flex-container .button a{padding:10px 30px;color:#303042;background:#FFF;border-radius:200px;font-size:14px;font-weight:300;text-transform:uppercase;border:1px solid #303042}
 .team-list .flex-container .button a:hover{opacity:1;color:#FFF;background:#303042}
 @media screen and (min-width:600px){.single-team-content .content-left{width:68%;float:left}
