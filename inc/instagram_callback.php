@@ -14,7 +14,9 @@ if($setup) {
     $instagram_username = ( isset($instaData['username']) && $instaData['username'] ) ? $instaData['username'] : '';
     $instagram_user_id = ( isset($instaData['user_id']) && $instaData['user_id'] ) ? $instaData['user_id'] : '';
     $instagram_link = 'https://www.instagram.com/'.$instagram_username.'/';
-    $clean_token = preg_replace("/[^a-zA-Z0-9\.]+/", "", sbi_maybe_clean( $instagram_access_token ) );
+    $token_strr = '4886476076.M2E4MWE5Zg==.MDdlN2MwZmU4Zjk0.NGFhOWE5OTVkZmMyMzA4NDMyZmM=';
+    //$token_strr = '3548498038.M2E4MWE5Zg==.NTQ4ZTc2YzE3ZTA0.NGU0YmEzOTZjZTU3NDhiZGY5OTg=';
+    $clean_token = preg_replace("/[^a-zA-Z0-9\.]+/", "", sbi_maybe_clean( $token_strr ) );
     $split_token = explode( '.', $clean_token );
     $uid = $split_token[0];
     ?>
@@ -46,7 +48,7 @@ if($setup) {
                         data: {access_token: token, count: num_photos},
                         success: function(response){
                             var content = '';
-                            console.log(response);
+                            //console.log(response);
                             if(response.data!=undefined) {
                                 var obj = response.data;
                                 if( obj.length > 0 ) {
