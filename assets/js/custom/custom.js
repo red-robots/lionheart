@@ -47,6 +47,31 @@ jQuery(document).ready(function ($) {
         slideshowSpeed: 10000
 	});
 
+	$(".phone.desktopview").on("click",function(e){
+		e.preventDefault();
+		var staff_name = $(this).attr('data-staff');
+		var number = $(this).attr('data-phone');
+		var html_content = '<div class="phoneLabel">Phone</div>';
+		html_content += '<div class="phoneNumtx">'+number+'</div>';
+		$.alert({
+		    title: staff_name,
+		    content: html_content,
+		    boxWidth: '500px',
+    		useBootstrap: false,
+    		buttons: {
+    			ok: {
+    				text: 'CLOSE'
+    			}
+    		},
+    		onOpenBefore: function () {
+    			$('.jconfirm').addClass('phone_col');
+    		},
+    		onClose: function () {
+    			$('.jconfirm').removeClass('phone_col');
+    		}
+		});
+	});
+
 	/*
 	*
 	*	Colorbox

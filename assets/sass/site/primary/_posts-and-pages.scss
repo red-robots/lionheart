@@ -710,6 +710,18 @@
 	}
 	.contact-info .phone {
 		transform: rotateY(180deg);
+		&.desktopview {
+			display: inline-block;
+			@media screen and (max-device-width: $deskwidth) {
+				display: none;
+			}
+		}
+		&.mobileview {
+			display: none;
+			@media screen and (max-device-width: $deskwidth) {
+				display: inline-block;
+			}
+		}
 	}
 	.button {
 		margin-top: 20px;
@@ -875,6 +887,34 @@
 	}
 	.copy p {
 		margin-top: 0;
+	}
+}
+.jconfirm.phone_col {
+	text-align: center;
+	.jconfirm-title {
+		font-size: 20px;
+	}
+	.phoneNumtx {
+		margin: 0 0;
+		font-size: 30px;
+	}
+	.jconfirm-box .jconfirm-title-c {
+		margin-top: 18px;
+		margin-bottom: 0;
+		padding-bottom: 9px;
+	}
+	.jconfirm-buttons {
+		position: relative;
+		top: -5px;
+	}
+	.phoneLabel {
+		text-transform: uppercase;
+		opacity: 0.75;
+	}
+	.jconfirm-buttons {
+		width: 100%;
+		float: left;
+		text-align: center;
 	}
 }
 

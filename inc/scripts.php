@@ -19,6 +19,13 @@ function acstarter_scripts() {
 		);
 
 	wp_enqueue_script( 
+			'jquery-confirm', 
+			get_template_directory_uri() . '/assets/js/vendors/jquery-confirm.min.js', 
+			array(), '20190101', 
+			true 
+		);
+
+	wp_enqueue_script( 
 			'acstarter-custom', 
 			get_template_directory_uri() . '/assets/js/custom.js', 
 			array(), '20120206', 

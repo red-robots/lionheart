@@ -56,7 +56,8 @@ get_header(); ?>
 												<a class="email" href="mailto:<?php echo $email?>"><i class="fas fa-envelope"></i></a>
 											<?php } ?>
 											<?php if($phone) { ?>
-												<a class="phone" href="tel:<?php echo format_phone_number($phone)?>"><i class="fas fa-phone"></i></a>
+												<a class="phone desktopview" href="#" data-staff="<?php echo $team_name; ?>" data-phone="<?php echo $phone; ?>"><i class="fas fa-phone"></i></a>
+												<a class="phone mobileview" href="tel:<?php echo format_phone_number($phone)?>"><i class="fas fa-phone"></i></a>
 											<?php } ?>
 										</div>
 										<?php } ?>
