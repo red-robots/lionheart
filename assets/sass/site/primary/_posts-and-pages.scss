@@ -607,6 +607,9 @@
 .property-search-iframe {
 	width: 100%;
 	height: 900px;
+	iframe {
+		height: 100%!important;
+	}
 }
 .site-main {
 	a {

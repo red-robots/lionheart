@@ -19,7 +19,7 @@ get_header(); ?>
 					<?php 
 					$iframe = get_field('property_search_iframe');
 					if($iframe) { ?>
-						<div class="property-search-iframe"><?php echo $iframe; ?></div>
+						<div class="property-search-iframe clear"><?php echo $iframe; ?></div>
 					<?php } ?>
 
 				<?php endwhile;  ?>
